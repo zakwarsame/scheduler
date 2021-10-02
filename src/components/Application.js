@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import DayListItem from "./DayListItem";
+// import DayListItem from "./DayListItem";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "./Appointment";
 import axios from "axios";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
+    interviewers: {}
   });
   const appointments = getAppointmentsForDay(state, state.day);
 
@@ -43,8 +44,9 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          {console.log("state", state)}
+          {/* {console.log("state", state.appointments)} */}
           <DayList days={state.days} day={state.day} setDay={setDay} />
+          {console.log("state", state.interviewers)}
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -53,9 +55,12 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {appointments.map((appointment) => (
-          <Appointment key={appointment.id} {...appointment} />
-        ))}
+        {appointments.map((appointment) => {
+          const interview = getInterview(state, appointment.interview);
+          {console.log("appt. interview", appointment.interview)}
+          return (
+          <Appointment key={appointment.id} {...appointment} interview={interview} />
+        )})}
       </section>
     </main>
   );
