@@ -22,7 +22,13 @@ export default function Appointment(props) {
   return (
     <article className="appointment">
       <Header time={props.time} />
-      {mode === CREATE && <Form interviewers={[]} onSave={() => console.log("onSave")} onCancel = {()=> back(EMPTY)}  />}
+      {mode === CREATE && (
+        <Form
+          interviewers={props.interviewers}
+          onSave={() => console.log("onSave")}
+          onCancel={() => back(EMPTY)}
+        />
+      )}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
