@@ -44,9 +44,7 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          {/* {console.log("state", state.appointments)} */}
           <DayList days={state.days} day={state.day} setDay={setDay} />
-          {console.log("state", state.interviewers)}
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -57,7 +55,6 @@ export default function Application(props) {
       <section className="schedule">
         {appointments.map((appointment) => {
           const interview = getInterview(state, appointment.interview);
-          {console.log("appt. interview", appointment.interview)}
           return (
           <Appointment key={appointment.id} {...appointment} interview={interview} />
         )})}
