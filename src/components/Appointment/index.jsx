@@ -51,7 +51,7 @@ export default function Appointment(props) {
       });
   };
 
-  // console.log(props);
+  // console.log("props",props);
   // console.log(mode);
   return (
     <article className="appointment">
