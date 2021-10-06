@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
 
 export default function useApplicationData(initial) {
@@ -54,50 +54,6 @@ export default function useApplicationData(initial) {
     return (reducers[action.type](state, action)|| reducers.default )
   }
 
-  // function reducer(state, action) {
-  //   switch (action.type) {
-  //     case SET_DAY:
-  //       return { ...state, day: action.day };
-  //     case SET_APPLICATION_DATA:
-  //       return {
-  //         ...state,
-  //         days: action.days,
-  //         appointments: action.appointments,
-  //         interviewers: action.interviewers,
-  //       };
-  //     case SET_INTERVIEW: {
-  //       const updateSpots = (appointments) => {
-  //         const currentDay = state.days.filter((day) => day.name === state.day);
-  //         let counter = 0;
-  //         for (let key of currentDay[0].appointments) {
-  //           if (!appointments[key].interview) {
-  //             counter++;
-  //           }
-  //         }
-  //         const newDay = { ...currentDay[0], spots: counter };
-  //         const days = state.days.map((day) => {
-  //           return day.id === newDay.id ? newDay : day;
-  //         });
-
-  //         return days;
-  //       };
-  //       const appointment = {
-  //         ...state.appointments[action.id],
-  //         interview: action.interview && { ...action.interview },
-  //       };
-  //       const appointments = {
-  //         ...state.appointments,
-  //         [action.id]: appointment,
-  //       };
-  //       const days = updateSpots(appointments);
-  //       return { ...state, appointments, days };
-  //     }
-  //     default:
-  //       throw new Error(
-  //         `Tried to reduce with unsupported action type: ${action.type}`
-  //       );
-  //   }
-  // }
 
   const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
@@ -133,12 +89,6 @@ export default function useApplicationData(initial) {
             appointments: all[1].data,
             interviewers: all[2].data,
           }
-          //   (prev) => ({
-          //   ...prev,
-          //   days: all[0].data,
-          //   appointments: all[1].data,
-          //   interviewers: all[2].data,
-          // }
         );
       }
     );
