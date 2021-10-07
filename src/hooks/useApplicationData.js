@@ -41,7 +41,7 @@ export default function useApplicationData(initial) {
     const fetchAppoitments = axios.get("/api/appointments");
     const fetchInterviewers = axios.get("/api/interviewers");
 
-    const socket = new WebSocket("ws://localhost:8001");
+    const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
 
     // listen for set interview messages and update the specific appointment based on interview val
     socket.onmessage = function (event) {
