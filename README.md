@@ -5,7 +5,9 @@
   Check out the live link <a href="https://schedulerverse.netlify.app/" target="_blank">schedulerverse.netlify.app </a> where <a href="https://www.netlify.com/" target="_blank">Netlify</a> serves the client, while automatic continuous integration and tests are managed using <a href="https://circleci.com/" target="_blank">CircleCI</a>. The server is hosted on <a href="https://www.heroku.com/" target="_blank">Heroku</a>.
 </p> 
 
+<p align="center">
 !["Home Page"](https://github.com/zakwarsame/scheduler/blob/master/docs/demo.png)
+</p> 
 
 ## 🚨 Description
 
