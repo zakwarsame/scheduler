@@ -6,7 +6,7 @@
 </p> 
 
 <p align="center">
-<img width="200" src="https://github.com/zakwarsame/scheduler/blob/master/docs/demo.png" alt="Home Page">
+<img width="720" src="https://github.com/zakwarsame/scheduler/blob/master/docs/demo.png" alt="Home Page">
 </p> 
 
 ## 🚨 Description
