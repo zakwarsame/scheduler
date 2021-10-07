@@ -2,7 +2,7 @@ const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 const SET_INTERVIEW = "SET_INTERVIEW";
 
-// Reducers with object lookup pattern.
+// Reducers using object lookup pattern.
 const reducers = {
   SET_DAY(state, action) {
     return { ...state, day: action.day };
