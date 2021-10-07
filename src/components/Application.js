@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import DayListItem from "./DayListItem";
+import React from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "./Appointment";
