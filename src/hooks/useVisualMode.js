@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // transition the mode based on current activity by user
 export default function useVisualMode(initial) {
