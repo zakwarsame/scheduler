@@ -7,6 +7,8 @@ import {
   SET_DAY,
   SET_INTERVIEW,
 } from "reducers/appDataReducer";
+const wsURL = process.env.REACT_APP_WEBSOCKET_URL || "ws://localhost:8001"
+
 
 // NOTE: "dispatch" will set the state dictated by the reducer
 export default function useApplicationData(initial) {
@@ -41,7 +43,7 @@ export default function useApplicationData(initial) {
     const fetchAppoitments = axios.get("/api/appointments");
     const fetchInterviewers = axios.get("/api/interviewers");
 
-    const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    const socket = new WebSocket(wsURL);
 
     // listen for set interview messages and update the specific appointment based on interview val
     socket.onmessage = function (event) {
