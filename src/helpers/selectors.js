@@ -22,8 +22,6 @@ export function getInterview(state, interview) {
 export function getInterviewersForDay(state, day) {
   const matchArr = [];
   const getInterviewMatch = state.days.filter((eachDay) => eachDay.name === day);
-  // console.log("my array",getInterviewMatch, "THE STATE:", state);
-
   if (!getInterviewMatch[0] || !getInterviewMatch[0].interviewers) return matchArr;
   for (let interview of getInterviewMatch[0].interviewers) {
     matchArr.push(state.interviewers[interview]);

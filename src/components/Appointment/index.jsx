@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
 import "./styles.scss";
 import Header from "./Header";
 import Show from "./Show";
@@ -23,10 +23,12 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
+  // show current status of an appointments slot based on users activity
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  // function for saving an appointment on both client and server side
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -41,6 +43,7 @@ export default function Appointment(props) {
       });
   };
 
+  // function for deleting an appointment on both client and server side
   const destroyAppointment = () => {
     transition(DELETING, true);
     cancelInterview(id)
@@ -51,8 +54,12 @@ export default function Appointment(props) {
       });
   };
 
-  // console.log("props",props);
-  // console.log(mode);
+  // update the transition based on interview and mode - used for avoiding TypeError during websocket connection
+  useEffect(() => {
+    (interview && mode === EMPTY) && transition(SHOW);
+    (!interview && mode === SHOW) && transition(EMPTY);
+  }, [interview, transition, mode]);
+
   return (
     <article className="appointment">
       <Header time={time} />
@@ -74,7 +81,7 @@ export default function Appointment(props) {
       )}
       {mode === SAVING && <Status message="Saving..." />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && (
+      {mode === SHOW && interview && (
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
